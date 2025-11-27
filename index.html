@@ -6,21 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
+        /* ===== Grundlayout ===== */
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(135deg, #000000, #660000);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
             color: #111111;
         }
 
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 30px auto 40px;
+            padding: 0 15px;
+        }
+
+        /* ===== Flyer ===== */
         .flyer {
             background: #ffffff;
-            width: 90%;
+            width: 100%;
             max-width: 900px;
+            margin: 0 auto 40px;
             border-radius: 18px;
             border: 3px solid #000000;
             box-shadow: 0 18px 45px rgba(0, 0, 0, 0.6);
@@ -111,6 +116,19 @@
             margin-top: 4px;
         }
 
+        .plan-link {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #cc0000;
+            text-decoration: none;
+        }
+
+        .plan-link:hover {
+            text-decoration: underline;
+        }
+
         .cta-box {
             margin-top: 20px;
             padding: 18px;
@@ -175,21 +193,245 @@
                 padding: 20px;
             }
         }
+
+        /* ===== Bandenplan / Stadion ===== */
+
+        .bandenplan-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #f5f5f5;
+            border-radius: 16px;
+            border: 3px solid #000;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
+            padding: 14px 12px 20px;
+        }
+
+        .bandenplan-section h2 {
+            text-align: center;
+            margin: 5px 0 5px;
+        }
+
+        .stadium {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5px;
+            overflow-x: auto;
+        }
+
+        /* Premiumbanden (großer Zaun hinter den Toren) */
+        .premium-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #d0d4d8;
+            padding: 8px 5px;
+            border-radius: 8px;
+            margin: 0 6px;
+        }
+
+        .premium-label {
+            font-size: 9px;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-align: center;
+        }
+
+        .premium-board {
+            width: 60px;
+            height: 50px;
+            margin: 3px 0;
+            background: #ffcc66;
+            border: 2px solid #000;
+            border-radius: 4px;
+            font-size: 9px;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Seiten hinter den Toren: 15 Banden */
+        .side-ads {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 520px; /* an kleinere Spielfeldgröße angepasst */
+        }
+
+        .board-vertical {
+            width: 26px;
+            height: 32px;
+            background: #ffffff;
+            border: 2px solid #000;
+            border-radius: 3px;
+            margin: 3px 0;
+            font-size: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        /* Zentrum: Längsseiten + Spielfeld */
+        .center-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Längsseiten: je 30 Banden */
+        .top-ads,
+        .bottom-ads {
+            width: 900px;
+            display: flex;
+            justify-content: space-between;
+            margin: 3px 0;
+        }
+
+        .board-horizontal {
+            flex: 0 0 auto;
+            width: 30px;
+            height: 24px;
+            background: #ffffff;
+            border: 2px solid #000;
+            border-radius: 3px;
+            font-size: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Spielfeld (verkleinert) */
+        .pitch-wrapper {
+            padding: 6px;
+            background: #3f7f3f;
+            border-radius: 6px;
+        }
+
+        .pitch {
+            position: relative;
+            width: 900px;
+            height: 520px;
+            border: 4px solid #ffffff;
+            box-sizing: border-box;
+            border-radius: 6px;
+            background-image:
+                linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+                linear-gradient(0deg, rgba(255,255,255,0.08) 1px, transparent 1px),
+                linear-gradient(135deg,#4ba44b,#7acd5a);
+            background-size: 36px 36px, 36px 36px, 100% 100%;
+        }
+
+        .line {
+            position: absolute;
+            background: #ffffff;
+        }
+
+        .halfway-line {
+            width: 4px;
+            height: 100%;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+
+        .center-circle {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            border: 4px solid #ffffff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .center-spot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffffff;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .penalty-area {
+            position: absolute;
+            width: 180px;
+            height: 310px;
+            border: 4px solid #ffffff;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .penalty-area.left { left: 0; }
+        .penalty-area.right { right: 0; }
+
+        .goal-area {
+            position: absolute;
+            width: 80px;
+            height: 150px;
+            border: 4px solid #ffffff;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .goal-area.left { left: 0; }
+        .goal-area.right { right: 0; }
+
+        .goal {
+            position: absolute;
+            width: 8px;
+            height: 50px;
+            border: 3px solid #ffffff;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.15);
+        }
+
+        .goal.left { left: -8px; }
+        .goal.right { right: -8px; }
+
+        .corner-arc {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+        }
+
+        .corner-arc.tl { left: -8px; top: -8px; clip-path: polygon(0 0,100% 0,0 100%); }
+        .corner-arc.bl { left: -8px; bottom: -8px; clip-path: polygon(0 100%,100% 100%,0 0); }
+        .corner-arc.tr { right: -8px; top: -8px; clip-path: polygon(0 0,100% 0,100% 100%); }
+        .corner-arc.br { right: -8px; bottom: -8px; clip-path: polygon(100% 0,100% 100%,0 100%); }
+
+        @media (max-width: 900px) {
+            .bandenplan-section {
+                padding: 10px 6px 14px;
+            }
+        }
     </style>
 </head>
 <body>
+<div class="page-wrapper">
+
+    <!-- =================== FLYER =================== -->
     <div class="flyer">
-        <!-- Kopfbereich -->
         <div class="flyer-header">
             <div class="flyer-header-logo">
-                <!-- Logo-Datei im gleichen Ordner ablegen, z.B. svp-logo.png -->
                 <img src="wappen.svg" alt="SV Pfingstweide 1972 e.V.">
             </div>
             <h1>Werde Sponsor</h1>
             <h2>Unterstütze den SV Pfingstweide 1972 e.V.</h2>
         </div>
 
-        <!-- Inhalt -->
         <div class="flyer-content">
             <div class="intro">
                 Werde Teil unserer Mannschaft – mit deiner Unterstützung für den SV Pfingstweide!
@@ -209,6 +451,7 @@
                         Im ersten Jahr kommen einmalig die Anschaffungskosten und die Anbringungskosten der Bande hinzu.
                         Deine Werbung ist dauerhaft am Spielfeldrand präsent – gut sichtbar für Zuschauer und Spieler.
                     </p>
+                    <a href="#bandenplan" class="plan-link">➜ Bandenplan ansehen</a>
                 </div>
 
                 <!-- Option 2: Premiumbanden hinter dem Tor -->
@@ -223,6 +466,7 @@
                     <p class="note">
                         Ideal für Unternehmen, die besonders auffallen möchten und bei jedem Torabschluss im Blickfeld sein wollen.
                     </p>
+                    <a href="#bandenplan" class="plan-link">➜ Premiumflächen im Bandenplan</a>
                 </div>
 
                 <!-- Option 3: Textiliensponsoring -->
@@ -237,7 +481,7 @@
                     <p>
                         – Trikots (z.&nbsp;B. Brust, Rücken, Ärmel)<br>
                         – Präsentationsanzüge<br>
-                        – Trainingskleidung 
+                        – Trainingskleidung
                     </p>
                     <p class="note">
                         Zeige deine Unterstützung bei jedem Auftritt der Mannschaft – auf dem Platz, beim Aufwärmen
@@ -261,14 +505,135 @@
             </div>
         </div>
 
-        <!-- Fußbereich -->
         <div class="flyer-footer">
             SV Pfingstweide 1972 e.V. · die roten Bullen ·
         </div>
     </div>
+
+    <!-- =================== BANDENPLAN =================== -->
+    <section id="bandenplan" class="bandenplan-section">
+        <h2>Bandenplan – Übersicht der Werbeflächen</h2>
+
+        <div class="stadium">
+
+            <!-- Premiumbanden hinter linkem Tor -->
+            <div class="premium-column">
+                <div class="premium-label">Premium hinter Tor</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+            </div>
+
+            <!-- 15 Standardbanden hinter linkem Tor -->
+            <div class="side-ads">
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+            </div>
+
+            <!-- Zentrum: Längsseiten + Spielfeld -->
+            <div class="center-area">
+
+                <!-- Obere Längsseite – 30 Banden -->
+                <div class="top-ads">
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                </div>
+
+                <!-- Spielfeld -->
+                <div class="pitch-wrapper">
+                    <div class="pitch">
+                        <div class="line halfway-line"></div>
+
+                        <div class="center-circle"></div>
+                        <div class="center-spot"></div>
+
+                        <div class="penalty-area left"></div>
+                        <div class="penalty-area right"></div>
+
+                        <div class="goal-area left"></div>
+                        <div class="goal-area right"></div>
+
+                        <div class="goal left"></div>
+                        <div class="goal right"></div>
+
+                        <div class="corner-arc tl"></div>
+                        <div class="corner-arc bl"></div>
+                        <div class="corner-arc tr"></div>
+                        <div class="corner-arc br"></div>
+                    </div>
+                </div>
+
+                <!-- Untere Längsseite – 30 Banden -->
+                <div class="bottom-ads">
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                </div>
+
+            </div>
+
+            <!-- 15 Standardbanden hinter rechtem Tor -->
+            <div class="side-ads">
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+                <div class="board-vertical">Bande</div>
+            </div>
+
+            <!-- Premiumbanden hinter rechtem Tor -->
+            <div class="premium-column">
+                <div class="premium-label">Premium hinter Tor</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+                <div class="premium-board">Premium</div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
 </body>
 </html>
-
-
-
-
