@@ -194,7 +194,7 @@
             }
         }
 
-        /* ===== Bandenplan / Stadion – verkleinert ===== */
+        /* ===== Bandenplan / Stadion ===== */
 
         .bandenplan-section {
             max-width: 900px;
@@ -211,14 +211,20 @@
             margin: 5px 0 5px;
         }
 
-        .stadium {
+        /* Wrapper, der auf Handy skaliert wird */
+        .stadium-wrapper {
             display: flex;
-            align-items: center;
             justify-content: center;
             margin-top: 5px;
         }
 
-        /* Premiumbanden (großer Zaun hinter den Toren) */
+        .stadium {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Premiumbanden (XXL) */
         .premium-column {
             display: flex;
             flex-direction: column;
@@ -305,7 +311,7 @@
             align-items: center;
         }
 
-        /* Spielfeld (verkleinert) */
+        /* Spielfeld */
         .pitch-wrapper {
             padding: 5px;
             background: #3f7f3f;
@@ -411,9 +417,18 @@
         .corner-arc.tr { right: -7px; top: -7px; clip-path: polygon(0 0,100% 0,100% 100%); }
         .corner-arc.br { right: -7px; bottom: -7px; clip-path: polygon(100% 0,100% 100%,0 100%); }
 
+        /* ==== MOBILE-ANPASSUNG FÜR STADION ==== */
         @media (max-width: 900px) {
-            .bandenplan-section {
-                padding: 10px 6px 14px;
+            .stadium-wrapper {
+                transform: scale(0.85);
+                transform-origin: top center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .stadium-wrapper {
+                transform: scale(0.7);
+                transform-origin: top center;
             }
         }
     </style>
@@ -513,104 +528,107 @@
     <section id="bandenplan" class="bandenplan-section">
         <h2>Bandenplan – Übersicht der Werbeflächen</h2>
 
-        <div class="stadium">
+        <div class="stadium-wrapper">
+            <div class="stadium">
 
-            <!-- Premiumbanden hinter linkem Tor -->
-            <div class="premium-column">
-                <div class="premium-label">Premiumbande XXL</div>
-                <div class="premium-board">Premium</div>
-                <div class="premium-board">Premium</div>
-            </div>
-
-            <!-- 8 Standardbanden hinter linkem Tor -->
-            <div class="side-ads">
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-            </div>
-
-            <!-- Zentrum: Längsseiten + Spielfeld -->
-            <div class="center-area">
-
-                <!-- Obere Längsseite – 20 Banden -->
-                <div class="top-ads">
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                <!-- Premiumbanden links -->
+                <div class="premium-column">
+                    <div class="premium-label">Premiumbande XXL</div>
+                    <div class="premium-board">Premium</div>
+                    <div class="premium-board">Premium</div>
                 </div>
 
-                <!-- Spielfeld -->
-                <div class="pitch-wrapper">
-                    <div class="pitch">
-                        <div class="line halfway-line"></div>
+                <!-- 8 Standardbanden hinter linkem Tor -->
+                <div class="side-ads">
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                </div>
 
-                        <div class="center-circle"></div>
-                        <div class="center-spot"></div>
+                <!-- Zentrum -->
+                <div class="center-area">
 
-                        <div class="penalty-area left"></div>
-                        <div class="penalty-area right"></div>
-
-                        <div class="goal-area left"></div>
-                        <div class="goal-area right"></div>
-
-                        <div class="goal left"></div>
-                        <div class="goal right"></div>
-
-                        <div class="corner-arc tl"></div>
-                        <div class="corner-arc bl"></div>
-                        <div class="corner-arc tr"></div>
-                        <div class="corner-arc br"></div>
+                    <!-- Obere Längsseite – 20 Banden -->
+                    <div class="top-ads">
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
                     </div>
+
+                    <!-- Spielfeld -->
+                    <div class="pitch-wrapper">
+                        <div class="pitch">
+                            <div class="line halfway-line"></div>
+
+                            <div class="center-circle"></div>
+                            <div class="center-spot"></div>
+
+                            <div class="penalty-area left"></div>
+                            <div class="penalty-area right"></div>
+
+                            <div class="goal-area left"></div>
+                            <div class="goal-area right"></div>
+
+                            <div class="goal left"></div>
+                            <div class="goal right"></div>
+
+                            <div class="corner-arc tl"></div>
+                            <div class="corner-arc bl"></div>
+                            <div class="corner-arc tr"></div>
+                            <div class="corner-arc br"></div>
+                        </div>
+                    </div>
+
+                    <!-- Untere Längsseite – 20 Banden -->
+                    <div class="bottom-ads">
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                        <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                    </div>
+
                 </div>
 
-                <!-- Untere Längsseite – 20 Banden -->
-                <div class="bottom-ads">
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
-                    <div class="board-horizontal">B</div><div class="board-horizontal">B</div>
+                <!-- 8 Standardbanden hinter rechtem Tor -->
+                <div class="side-ads">
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                    <div class="board-vertical">Bande</div>
+                </div>
+
+                <!-- Premiumbanden rechts -->
+                <div class="premium-column">
+                    <div class="premium-label">Premiumbande XXL</div>
+                    <div class="premium-board">Premium</div>
+                    <div class="premium-board">Premium</div>
                 </div>
 
             </div>
-
-            <!-- 8 Standardbanden hinter rechtem Tor -->
-            <div class="side-ads">
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-                <div class="board-vertical">Bande</div>
-            </div>
-
-            <!-- Premiumbanden hinter rechtem Tor -->
-            <div class="premium-column">
-                <div class="premium-label">Premiumbande XXL</div>
-                <div class="premium-board">Premium</div>
-                <div class="premium-board">Premium</div>
-            </div>
-
         </div>
+
     </section>
 
 </div>
