@@ -211,17 +211,17 @@
             margin: 5px 0 5px;
         }
 
-        /* Wrapper, der auf Handy skaliert wird */
+        /* Wrapper mit Horizontal-Scroll für Handy */
         .stadium-wrapper {
-            display: flex;
-            justify-content: center;
             margin-top: 5px;
+            overflow-x: auto;
         }
 
         .stadium {
-            display: flex;
+            display: inline-flex;  /* sorgt dafür, dass alles in einem Block ist */
             align-items: center;
             justify-content: center;
+            min-width: 800px;     /* damit es breiter als kleine Handys ist */
         }
 
         /* Premiumbanden (XXL) */
@@ -417,20 +417,6 @@
         .corner-arc.tr { right: -7px; top: -7px; clip-path: polygon(0 0,100% 0,100% 100%); }
         .corner-arc.br { right: -7px; bottom: -7px; clip-path: polygon(100% 0,100% 100%,0 100%); }
 
-        /* ==== MOBILE-ANPASSUNG FÜR STADION ==== */
-        @media (max-width: 900px) {
-            .stadium-wrapper {
-                transform: scale(0.85);
-                transform-origin: top center;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .stadium-wrapper {
-                transform: scale(0.7);
-                transform-origin: top center;
-            }
-        }
     </style>
 </head>
 <body>
